@@ -6,9 +6,10 @@ import sys
 import argparse
 from harmonic import frac_str, solve_ips
 from fractions import Fraction
+from typing import Optional, Sequence, TextIO
 
 
-def tex_str(x, float_only):
+def tex_str(x: Optional[Fraction], float_only: bool) -> str:
     if x is None:
         return '--'
     else:
@@ -20,9 +21,9 @@ def tex_str(x, float_only):
             return '$\\sfrac{%s}{%s} = \\texttt{%.8f}$' % (x.numerator, x.denominator, float(x))
 
 
-def get_mu(label, k):
+def get_mu(label: str, k: int) -> Optional[Fraction]:
     if label == 'one':
-        return 1
+        return Fraction(1)
     elif label == 'lee':
         return Fraction(k, k - 1) if k >= 2 else None
     elif label == 'eku':
@@ -41,7 +42,8 @@ TEX_LABELS = {
 }
 
 
-def print_table(ks, labels, format, use_float, file, debug):
+def print_table(ks: Sequence[int], labels: Sequence[str], format: str,
+        use_float: bool, file: TextIO, debug: bool) -> None:
     if format == 'csv':
         print('k,' + ','.join(labels), file=file)
         for k in ks:
@@ -63,7 +65,7 @@ def print_table(ks, labels, format, use_float, file, debug):
         raise NotImplementedError('format {}'.format(repr(format)))
 
 
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('kmax', type=int)
     parser.add_argument('fmt', choices=('csv', 'tex'))

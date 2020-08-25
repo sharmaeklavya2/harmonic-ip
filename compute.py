@@ -3,11 +3,11 @@
 for a given value of k and mu."""
 
 import argparse
-from harmonic import solve_ips
+from harmonic import frac_str, solve_ips
 from fractions import Fraction
 
 
-def main():
+def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('k', type=int)
     parser.add_argument('mu', type=Fraction)
@@ -18,7 +18,7 @@ def main():
     if args.mu < 0:
         raise ValueError('mu should be >= 0')
     best_score = solve_ips(args.k, [args.mu], args.debug)[0]
-    print(best_score, '=', float(best_score))
+    print(best_score, '=', frac_str(best_score, use_float=True))
 
 
 if __name__ == '__main__':

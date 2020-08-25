@@ -69,3 +69,11 @@ $ ./print-table.py 4 tex
 \hline \end{tabular}
 ```
 Run `./print-table.py --help` to see all available command-line options.
+
+## Static type checking
+
+This program contains [PEP 484](https://www.python.org/dev/peps/pep-0484/) type annotations.
+To statically type-check this program using [mypy](http://mypy-lang.org/), run
+```
+mypy --disallow-untyped-calls --disallow-untyped-defs --disallow-incomplete-defs compute.py print-table.py
+```
