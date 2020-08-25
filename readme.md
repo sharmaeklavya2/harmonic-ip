@@ -27,7 +27,7 @@ where we want to maximize `sum([z[j] * (1/(j+1) - μ/(j+2)) for j in range(k-1)]
 under the constraint that `sum([z[j]/(j+1) for j in range(k-1)]) < 1`.
 Call it the harmonic integer program.
 
-Given a set `X` of numbers such that `sum(X) ≤ 1`,
+For every set `X` of numbers such that `sum(X) ≤ 1`,
 we would like to find the least upper bound (LUB) on `sum([f(x) for x in X])`.
 It can be proved that this LUB is the same as the optimal value of `IP(k, μ)`.
 
