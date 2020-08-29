@@ -27,7 +27,7 @@ def get_mu(label: str, k: int) -> Optional[Fraction]:
     elif label == 'lee':
         return Fraction(k, k - 1) if k >= 2 else None
     elif label == 'eku':
-        return Fraction(k * k, k * k - k - 1) if k >= 2 else None
+        return Fraction(k * (k - 2), k * k - 3 * k + 1) if k >= 3 else None
     elif label == 'capr':
         return Fraction(k, k - 2) if k >= 3 else None
     else:
@@ -36,9 +36,9 @@ def get_mu(label: str, k: int) -> Optional[Fraction]:
 
 TEX_LABELS = {
     'one': '$1$',
-    'lee': '$k/(k-1)$',
-    'capr': '$k/(k-2)$',
-    'eku': '$k^2/(k^2-k-1)$',
+    'lee': '$\\frac{k}{k-1}$',
+    'capr': '$\\frac{k}{k-2}$',
+    'eku': '$\\frac{k(k-2)}{k^2-3k+1}$',
 }
 
 
