@@ -1,6 +1,7 @@
 ## Harmonic IP
 
 A python program that finds optimal solutions to the harmonic integer program.
+See my [paper on the harmonic function](https://arxiv.org/abs/2011.11618) for details.
 
 ## The harmonic integer program
 
